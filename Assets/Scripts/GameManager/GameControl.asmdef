@@ -1,0 +1,18 @@
+{
+    "name": "GameControl",
+    "rootNamespace": "",
+    "references": [
+        "GUID:18ca24388294006419247577ddd275aa",
+        "GUID:ce9d849d1e2fbae46be0184e6aa21fcc",
+        "GUID:b377293da21949240b3c510ad4a60e5a"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

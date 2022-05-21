@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Asteroid
+  - Trigger
+  - UFO
+  - Bullet
+  - Laser
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - Player
+  - Asteroids
+  - Teleports
+  - UFO
+  - Bullets
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Asteroids
+    uniqueID: 848208095
+    locked: 0
+  - name: UFO
+    uniqueID: 10769913
+    locked: 0
+  - name: Bullets
+    uniqueID: 108575313
+    locked: 0
+  - name: Laser
+    uniqueID: 1186281389
+    locked: 0
+  - name: Player
+    uniqueID: 505795019
+    locked: 0
