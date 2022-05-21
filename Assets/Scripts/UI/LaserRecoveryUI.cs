@@ -26,7 +26,6 @@ public class LaserRecoveryUI : MonoBehaviour
         if (isBusy) return;
 
         int index = (Mathf.FloorToInt(progress * 100f) / 10) / 3;
-        Debug.Log("index " + index);
 
         if (index < progressIndexes.Length)
         {
