@@ -9,6 +9,7 @@ public class GameManager
 
     public GameManager (GameControl _gameControl, Transform playerTransform)
     {
+        Time.timeScale = 1f;
         gameControl = _gameControl;
         player = new Player();
         enemyCreator = new EnemyCreator(player, gameControl.GetComponent<EnemySpawnerTimerAndCreator>());
@@ -26,10 +27,10 @@ public class GameManager
 
     public void GameOver()
     {
-        //Debug.Log("GAME OVER!!!");
         player.OnPlayerHasDied -= GameOver;
         gameControl.StopGame();
         enemyCreator.StopEnemyCreator();
+        Time.timeScale = 0f; 
     }
 
     public void RestartGame()

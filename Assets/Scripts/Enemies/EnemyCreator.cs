@@ -30,7 +30,7 @@ public class EnemyCreator
 
     [Header("Enemy Spawner Parameters")]
     [SerializeField] private float asteroidsPart = 0.7f;
-    [SerializeField] private int maxEnemiesNumber = 20;
+    [SerializeField] private int maxEnemiesNumber = 15;
 
     private Player player;
     private EnemySpawnerTimerAndCreator enemySpawner;
