@@ -21,6 +21,14 @@ namespace Systems.Spawners
                 Rotation = Quaternion.identity,
                 Parent = _sceneData.TeleportContainer
             };
+
+            _world.NewEntity().Get<SpawnPrefab>() = new SpawnPrefab
+            {
+                Prefab = _staticData.ExternalTeleportPrefab,
+                Position = _sceneData.TeleportContainer.position,
+                Rotation = Quaternion.identity,
+                Parent = _sceneData.TeleportContainer
+            };
         }
     }
 }

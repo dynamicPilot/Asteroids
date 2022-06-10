@@ -1,6 +1,7 @@
 using Leopotam.Ecs;
 using UnityComponents.Common;
 using UnityEngine;
+using Utilities.Spawner;
 
 namespace Systems.Spawners
 {
@@ -21,18 +22,21 @@ namespace Systems.Spawners
         public void Run()
         {
             _lastTime += Time.deltaTime;
+
             if (_lastTime > _spawnDelay)
             {
                 _world.NewEntity().Get<SpawnPrefab>() = new SpawnPrefab
                 {
                     Prefab = _staticData.AsteroidPrefab,
-                    Position = _sceneData.AsteroidsContainer.position,
+                    Position = SpawnerUtility.GetPositionToSpawn(_staticData),
                     Rotation = Quaternion.identity,
                     Parent = _sceneData.AsteroidsContainer
                 };
 
                 _lastTime -= _spawnDelay;
             }
+
+
         }
     }
 }

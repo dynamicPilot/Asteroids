@@ -13,8 +13,11 @@ MonoBehaviour:
   m_Name: StaticData
   m_EditorClassIdentifier: 
   PlayerPrefab: {fileID: 3151326024424459450, guid: e57d2ff4e479e9547ad6fdbae420d925, type: 3}
-  AsteroidPrefab: {fileID: 2116353068753373821, guid: 8d7a9a7bdf7f5f543af638b981921d9f, type: 3}
+  PlayerAngularVelocity: 3
   SpawnTimer: 5
-  PlayerAddForce: {x: 0, y: 0.001, z: 0}
-  _globalGravitation: {x: 0, y: -0.001, z: 0}
+  AsteroidPrefab: {fileID: 2116353068753373821, guid: 8d7a9a7bdf7f5f543af638b981921d9f, type: 3}
+  _pushForce: 100
+  _velocitySensitivity: 0.01
+  _globalGravitation: {x: 0, y: -0.00001, z: 0}
   TeleportPrefab: {fileID: 3770589049593616070, guid: 44835d5b7b18d874f8fc0b1bbea0362d, type: 3}
+  ExternalTeleportPrefab: {fileID: 5177116050189196351, guid: 573fa68023284a04e8d23b8df2a19b00, type: 3}

@@ -7,35 +7,36 @@ using UnityEngine.SceneManagement;
 /// 
 public class GameControl : MonoBehaviour
 {
+    [SerializeField] private Transform playerTransform;
     [SerializeField] private GameUIControl gameUIControl;
 
     private GameManager gameManager;
     private void Awake()
     {
         Time.timeScale = 1f;
-        //gameManager = new GameManager(this, playerTransform);
+        gameManager = new GameManager(this, playerTransform);
 
-        //if (gameManager == null)
-        //{
-        //    Debug.LogError("GameControl: no gameManager!");
-        //}
+        if (gameManager == null)
+        {
+            Debug.LogError("GameControl: no gameManager!");
+        }
 
-        //gameUIControl.SetUI(gameManager.ActivePlayer);
+        gameUIControl.SetUI(gameManager.ActivePlayer);
     }
 
     public void StartGame()
     {
-    //    gameManager.StartGame();
-    //    gameUIControl.StartGame();
+        gameManager.StartGame();
+        gameUIControl.StartGame();
     }
 
     public void StopGame()
     {
-    //    gameUIControl.StopGame();
+        gameUIControl.StopGame();
     }
 
     public void RestartGame()
     {
-    //    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

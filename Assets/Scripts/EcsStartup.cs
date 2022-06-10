@@ -84,18 +84,22 @@ namespace Client {
         {
             EcsSystems inputSystems = new EcsSystems(_world)
                 .OneFrame<VertucalKeyDownTag>()
+                .OneFrame<HorizontalKeyDownTag>()
                 .Add(new KeyInputSystem())
-                .Add(new AddVelocityInputSystem());
+                .Add(new AddRotationInputSystem())
+                .Add(new AddForceInputSystem());
+                
             return inputSystems;
         }
 
         private EcsSystems MovableSystems()
         {
             return new EcsSystems(_world)
+                .Add(new UpdateAccelerationSystem())
                 .Add(new GravitationSystem())
                 .Add(new MoveSystem())
                 .Add(new TeleportingSystem())
-                .Add(new UpdateRigidbodyPosition());
+                .Add(new UpdateBodyPositionAndRotation());
         }
 
         private EcsSystems CoreGameplaySystems()

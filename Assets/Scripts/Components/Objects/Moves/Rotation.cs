@@ -1,15 +1,15 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Components.Objects.Moves
 {
     /// <summary>
-    /// Hold Vector3 Velocity value.
+    /// Hold Vector3 Roation value.
     /// </summary>
     [System.Serializable]
-    public struct Velocity
+    public struct Rotation
     {
         public Vector3 Value;
-        public Vector3 Acceleration;
     }
 }
-

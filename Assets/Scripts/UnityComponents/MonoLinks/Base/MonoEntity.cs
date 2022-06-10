@@ -7,8 +7,8 @@ namespace UnityComponents.MonoLinks.Base
 {
     public class MonoEntity : MonoLinkBase
     {
-        [SerializeField] private EcsEntity _entity; // ECS entity
-        [SerializeField] private MonoLinkBase[] _monoLinks; // like components
+        private protected EcsEntity _entity; // ECS entity
+        private MonoLinkBase[] _monoLinks; // like components
 
         public MonoLink<T> Get<T>() where T : struct
         {

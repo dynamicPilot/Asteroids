@@ -1,3 +1,4 @@
+using Components.Objects.Tags;
 using Components.Objects;
 using Components.PhysicsEvents;
 using Leopotam.Ecs;
@@ -23,7 +24,6 @@ namespace Systems.MoveSystems
                 
                 if (side == SIDE.up || side == SIDE.down)
                 {
-                    Debug.Log("Teleporting...");
                     position.Value = new Vector3(position.Value.x, position.Value.y * -1, position.Value.z);
                 }
                 else if (side == SIDE.left || side == SIDE.right)

@@ -6,7 +6,9 @@ using Components.Objects.Tags;
 using Components.PhysicsEvents;
 using Leopotam.Ecs;
 using UnityComponents.MonoLinks;
+using UnityComponents.MonoLinks.UnityBaseComponents;
 using UnityEngine;
+using Utilities.Teleporting;
 
 namespace Systems.CoreSystems.Teleport
 {
@@ -27,17 +29,25 @@ namespace Systems.CoreSystems.Teleport
                 var OnTriggerExit2DEvent = entity.Get<OnTriggerExit2DEvent>();
 
                 GameObject colliderGameObject = OnTriggerExit2DEvent.Collider.gameObject;
-                var teleportingObject = colliderGameObject.GetComponent<TeleportTagMonoLink>();
+                var teleportTag = colliderGameObject.GetComponent<TeleportTagMonoLink>();
+                var boxColliderTag = colliderGameObject.GetComponent<BoxCollider2DMonoLink>();
 
-                if (teleportingObject == null)
+                if (teleportTag == null || boxColliderTag == null)
                 {
-                    Debug.Log("No Teleport");
+                    // no teleport or teleport without box collider
                     continue;
                 }
 
-                Debug.Log("Teleport is here");
-                entity.Get<TeleportingTag>() = new TeleportingTag { Value = SIDE.down };
+                // get side
+                GameObjectLink selfObjectLink = _filter.Get1(index);
+                entity.Get<TeleportingTag>() = new TeleportingTag { Value = GetContactSide(colliderGameObject, selfObjectLink) };
             }
+        }
+
+        private SIDE GetContactSide(GameObject teleportObject, GameObjectLink selfObjectLink)
+        {
+            return BoxSideCalculatorUtility.CalculateSideOfBoxWhenContact(teleportObject.GetComponent<BoxCollider2D>().size,
+                selfObjectLink.Value.transform.position);
         }
     }
 

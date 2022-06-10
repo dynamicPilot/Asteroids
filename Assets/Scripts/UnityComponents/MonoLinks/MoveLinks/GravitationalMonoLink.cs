@@ -1,7 +1,7 @@
 using Components.Objects.Moves;
 using UnityComponents.MonoLinks.Base;
 
-namespace UnityComponents.MonoLinks
+namespace UnityComponents.MonoLinks.MoveLinks
 {
     /// <summary>
     /// Effected by Gravitation Tag.

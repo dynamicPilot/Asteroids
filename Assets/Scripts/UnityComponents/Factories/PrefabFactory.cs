@@ -6,6 +6,11 @@ using UnityEngine;
 
 namespace UnityComponents.Factories
 {
+    public interface ISpawnPrefab
+    {
+        public void SpawnPrefab();
+    }
+
     public class PrefabFactory : MonoBehaviour
     {
         // Factory for spawn enemies
