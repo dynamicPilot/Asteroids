@@ -57,6 +57,7 @@ namespace Client {
                 .Init ();
 
             EcsSystems coreSystems = CoreGameplaySystems();
+            EcsSystems followPlayerSystems = FollowPlayerSystems();
             EcsSystems movableSystems = MovableSystems();
             EcsSystems teleportSystems = TeleportSystems();
 
@@ -64,6 +65,8 @@ namespace Client {
                 
                 .Add(teleportSystems)                
                 .Add(movableSystems)
+                .Add(followPlayerSystems)
+                .Add(new UpdateBodyPositionAndRotation())
                 .Add(coreSystems)
                 .OneFrame<OnTriggerExit2DEvent>()               
                 .OneFrame<OnCollisionEnter2DEvent>()               
@@ -86,10 +89,19 @@ namespace Client {
                 .OneFrame<VertucalKeyDownTag>()
                 .OneFrame<HorizontalKeyDownTag>()
                 .Add(new KeyInputSystem())
+                .Add(new ShootingInputSystem())
+                .Add(new MakeWeaponShootSystem())
                 .Add(new AddRotationInputSystem())
                 .Add(new AddForceInputSystem());
                 
             return inputSystems;
+        }
+
+        private EcsSystems FollowPlayerSystems()
+        {
+            return new EcsSystems(_world)
+                .Add(new FollowPlayerAddPlayerPositionSystem())
+                .Add(new FollowPlayerAddForceSystem());
         }
 
         private EcsSystems MovableSystems()
@@ -98,8 +110,7 @@ namespace Client {
                 .Add(new UpdateAccelerationSystem())
                 .Add(new GravitationSystem())
                 .Add(new MoveSystem())
-                .Add(new TeleportingSystem())
-                .Add(new UpdateBodyPositionAndRotation());
+                .Add(new TeleportingSystem());
         }
 
         private EcsSystems CoreGameplaySystems()

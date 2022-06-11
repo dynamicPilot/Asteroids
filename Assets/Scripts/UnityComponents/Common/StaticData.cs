@@ -7,10 +7,17 @@ namespace UnityComponents.Common
     {
         [Header("Player")]
         public GameObject PlayerPrefab;
+        [Header("---")]
+        public float PushForce = 100f;
         public float PlayerAngularVelocity = 3f;
 
         [Header("Enemies")]
         public GameObject AsteroidPrefab;
+        public GameObject UFOPrefab;
+        public float UFOPart = 0.3f;
+        [Header("---")]
+        public float UFOPushForce = 60f;
+        [Header("---")]
         public int MaxEnemiesNumber = 15;
         public float SpawnTimer = 10f;
         [Header("---")]
@@ -23,15 +30,9 @@ namespace UnityComponents.Common
         public float SpawnerMinVelocity = -1.5f;
         public float SpawnerMaxVelocity = 1.5f;
 
-        [Header("Physics")]
-        [SerializeField] private float _pushForce = 100f;
-        public float PushForce { get => _pushForce; }
-
-        [SerializeField] private float _velocitySensitivity = 0.01f;
-        public float VelocitySensitivity { get => _velocitySensitivity; }
-
-        [SerializeField] private Vector3 _globalGravitation = new Vector3(0f, -0.0009f, 0f);
-        public Vector3 GlobalGravitation { get => _globalGravitation; }
+        [Header("Physics")]        
+        public float VelocitySensitivity = 0.01f;
+        public Vector3 GlobalGravitation = new Vector3(0f, 0f, 0f);
 
         [Header("Teleport Screen")]
         public GameObject TeleportPrefab;

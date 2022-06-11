@@ -132,7 +132,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 46222244}
-  - component: {fileID: 46222245}
   m_Layer: 0
   m_Name: UFOs
   m_TagString: Untagged
@@ -155,21 +154,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &46222245
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 46222243}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7acf5d616617b54bbe1a70c5cebc36c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefab: {fileID: 4405690009080508314, guid: 6f373f6b5047b1341bc487ed157bc785, type: 3}
-  sprites:
-  - {fileID: 2676159555221356526, guid: f500df345f98ed64d82c786ceb9819e0, type: 3}
 --- !u!1 &112810614
 GameObject:
   m_ObjectHideFlags: 0
@@ -424,8 +408,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minTimerValue: 2
   maxTimerValue: 5
-  asteroidGameObjectCreator: {fileID: 1755802039}
-  ufoGameObjectCreator: {fileID: 46222245}
+  asteroidGameObjectCreator: {fileID: 0}
+  ufoGameObjectCreator: {fileID: 0}
   enemyCreator:
     minX: 0
     minY: 0
@@ -791,6 +775,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _factory: {fileID: 142217536}
   AsteroidsContainer: {fileID: 1755802038}
+  UFOsContainer: {fileID: 46222244}
   TeleportContainer: {fileID: 701241578}
 --- !u!1 &569276210
 GameObject:
@@ -2357,7 +2342,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1755802038}
-  - component: {fileID: 1755802039}
   m_Layer: 0
   m_Name: Asteroids
   m_TagString: Untagged
@@ -2380,21 +2364,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1755802039
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1755802037}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7acf5d616617b54bbe1a70c5cebc36c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefab: {fileID: 8002888196888974590, guid: 9573dc4020a6233438dcf087ecad9d26, type: 3}
-  sprites:
-  - {fileID: 21300000, guid: 5b9656ebb7c29ba4196b6cfd141bb460, type: 3}
 --- !u!1 &1785696454
 GameObject:
   m_ObjectHideFlags: 0

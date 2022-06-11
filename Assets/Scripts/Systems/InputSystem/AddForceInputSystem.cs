@@ -17,9 +17,7 @@ namespace Systems.InputSystems
 			{
 				ref EcsEntity entity = ref _filter.GetEntity(index);
 
-				//ref Velocity velocity = ref entity.Get<Velocity>();
 				ref GameObjectLink gameObject = ref entity.Get<GameObjectLink>();
-				ref BodyLink body = ref entity.Get<BodyLink>();
 				ref Force force = ref entity.Get<Force>();
 
 				force.Value = gameObject.Value.transform.up * _staticData.PushForce;

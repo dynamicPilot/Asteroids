@@ -25,18 +25,41 @@ namespace Systems.Spawners
 
             if (_lastTime > _spawnDelay)
             {
-                _world.NewEntity().Get<SpawnPrefab>() = new SpawnPrefab
+                if (Random.Range(0, 1f) > _staticData.UFOPart)
                 {
-                    Prefab = _staticData.AsteroidPrefab,
-                    Position = SpawnerUtility.GetPositionToSpawn(_staticData),
-                    Rotation = Quaternion.identity,
-                    Parent = _sceneData.AsteroidsContainer
-                };
+                    SpawnAsteroid();
+                }
+                else
+                {
+                    SpawnUFO();
+                }
 
                 _lastTime -= _spawnDelay;
             }
 
 
+        }
+
+        void SpawnAsteroid()
+        {
+            _world.NewEntity().Get<SpawnPrefab>() = new SpawnPrefab
+            {
+                Prefab = _staticData.AsteroidPrefab,
+                Position = SpawnerUtility.GetPositionToSpawn(_staticData),
+                Rotation = Quaternion.identity,
+                Parent = _sceneData.AsteroidsContainer
+            };
+        }
+
+        void SpawnUFO()
+        {
+            _world.NewEntity().Get<SpawnPrefab>() = new SpawnPrefab
+            {
+                Prefab = _staticData.UFOPrefab,
+                Position = SpawnerUtility.GetPositionToSpawn(_staticData),
+                Rotation = Quaternion.identity,
+                Parent = _sceneData.UFOsContainer
+            };
         }
     }
 }

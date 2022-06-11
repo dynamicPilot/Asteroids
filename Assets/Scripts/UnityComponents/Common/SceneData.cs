@@ -9,6 +9,7 @@ namespace UnityComponents.Common
         public PrefabFactory Factory { get => _factory; }
 
         public Transform AsteroidsContainer;
+        public Transform UFOsContainer;
         public Transform TeleportContainer;
     }
 }

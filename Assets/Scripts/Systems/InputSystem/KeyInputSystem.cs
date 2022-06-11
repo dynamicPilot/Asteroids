@@ -15,7 +15,6 @@ namespace System.InputSystems
         {
             float v = Input.GetAxis("Vertical");
             float h = Input.GetAxis("Horizontal");
-            
 
             if (v > 0)
             {
@@ -33,8 +32,9 @@ namespace System.InputSystems
             foreach (int index in _filter)
             {
                 ref EcsEntity entity = ref _filter.GetEntity(index);
-                entity.Get<HorizontalKeyDownTag>() = new HorizontalKeyDownTag() { Value = h };
+                entity.Get<HorizontalKeyDownTag>().Value = h;
             }
+
 
 
             //if (Input.anyKeyDown)
