@@ -11,6 +11,7 @@ namespace Systems.Spawners
         private SceneData _sceneData;
 
         private EcsFilter<SpawnPrefab> _spawnFilter = null;
+        private EcsFilter<SpawnPrefabWithVelocity> _withVelocitySpawnFilter = null;
 
         private PrefabFactory _factory;
 
@@ -23,9 +24,8 @@ namespace Systems.Spawners
 
         public void Run()
         {
-            if (_spawnFilter.IsEmpty())
+            if (_spawnFilter.IsEmpty() && _withVelocitySpawnFilter.IsEmpty())
             {
-                // no enemies need to be spawn -> filter is empty
                 return;
             }
 
@@ -38,6 +38,14 @@ namespace Systems.Spawners
                 _factory.SpawnPrefab(spawnPrefab);
                 spawnEntity.Del<SpawnPrefab>(); // delete component SpawnPrefab from spawnEntity ->
                                                 // это позже способствует удалению самой Entity, так как не бывает пустых сущностей
+            }
+            foreach (int index in _withVelocitySpawnFilter)
+            {
+                ref EcsEntity spawnEntity = ref _withVelocitySpawnFilter.GetEntity(index);
+
+                var spawnPrefab = spawnEntity.Get<SpawnPrefabWithVelocity>();
+                _factory.SpawnPrefabWithVelocity(spawnPrefab);
+                spawnEntity.Del<SpawnPrefabWithVelocity>();
             }
         }
     }

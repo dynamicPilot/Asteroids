@@ -777,6 +777,7 @@ MonoBehaviour:
   AsteroidsContainer: {fileID: 1755802038}
   UFOsContainer: {fileID: 46222244}
   TeleportContainer: {fileID: 701241578}
+  BulletsContainer: {fileID: 2085506840}
 --- !u!1 &569276210
 GameObject:
   m_ObjectHideFlags: 0

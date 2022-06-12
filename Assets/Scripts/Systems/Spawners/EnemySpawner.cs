@@ -42,12 +42,13 @@ namespace Systems.Spawners
 
         void SpawnAsteroid()
         {
-            _world.NewEntity().Get<SpawnPrefab>() = new SpawnPrefab
+            _world.NewEntity().Get<SpawnPrefabWithVelocity>() = new SpawnPrefabWithVelocity
             {
                 Prefab = _staticData.AsteroidPrefab,
                 Position = SpawnerUtility.GetPositionToSpawn(_staticData),
                 Rotation = Quaternion.identity,
-                Parent = _sceneData.AsteroidsContainer
+                Parent = _sceneData.AsteroidsContainer,
+                Velocity = SpawnerUtility.GetVelocityToSpawn(_staticData)
             };
         }
 

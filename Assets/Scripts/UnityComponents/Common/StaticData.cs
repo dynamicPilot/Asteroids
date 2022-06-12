@@ -8,6 +8,8 @@ namespace UnityComponents.Common
         [Header("Player")]
         public GameObject PlayerPrefab;
         [Header("---")]
+        public GameObject PistolPrefab;
+        [Header("---")]
         public float PushForce = 100f;
         public float PlayerAngularVelocity = 3f;
 

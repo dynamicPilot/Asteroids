@@ -311,5 +311,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2913fb11df2658d4383899284ed80ae4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Value:
-    Weapons: []

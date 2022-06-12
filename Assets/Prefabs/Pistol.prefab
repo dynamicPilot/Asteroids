@@ -9,12 +9,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4452128637897985445}
-  - component: {fileID: 2081536685419812739}
+  - component: {fileID: -4946142001018257132}
   - component: {fileID: 4452128637897985444}
   - component: {fileID: 40278621149247769}
   - component: {fileID: 5590987014216135535}
   m_Layer: 0
-  m_Name: Weapon
+  m_Name: Pistol
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35,7 +35,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2081536685419812739
+--- !u!114 &-4946142001018257132
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -61,7 +61,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Value:
     Value: 0
-    Data: {fileID: 0}
+    Data: {fileID: 11400000, guid: 1309722bce17b3647909d41005184865, type: 2}
 --- !u!114 &40278621149247769
 MonoBehaviour:
   m_ObjectHideFlags: 0

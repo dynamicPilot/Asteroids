@@ -11,8 +11,12 @@ namespace UnityComponents.MonoLinks.Base
             base.Make(ref entity);
 
             WeaponTag weaponTag = entity.Get<WeaponTag>();
-            entity.Get<Shoots>() = new Shoots() { Value = weaponTag.Data.MaxShooting };
-            entity.Get<RecoveryTimer>() = new RecoveryTimer() { IsActive = true, Value = 0f, RecoveryValue = weaponTag.Data.RecoveryTime };
+            entity.Get<Shoots>() = new Shoots() { Value = weaponTag.Data.MaxShoots, MaxValue = weaponTag.Data.MaxShoots };
+            entity.Get<RecoveryTimer>() = new RecoveryTimer() { 
+                IsActive = false, 
+                Value = 0f, 
+                RecoveryValue = weaponTag.Data.RecoveryTime 
+            };
         }
     }
 }

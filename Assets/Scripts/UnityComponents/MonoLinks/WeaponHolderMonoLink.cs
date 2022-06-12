@@ -10,10 +10,9 @@ namespace UnityComponents.MonoLinks
 {
     public class WeaponHolderMonoLink : MonoLink<WeaponHolderTag>
 {
-        public override void Make(ref EcsEntity entity)
-        {
-            entity.Get<WeaponHolderTag>() = new WeaponHolderTag { Weapons = GetComponentsInChildren<WeaponTagMonoLink>()};
-            Debug.Log("Length of weapon " + entity.Get<WeaponHolderTag>().Weapons.Length);
-        }
+        //public override void Make(ref EcsEntity entity)
+        //{
+        //    entity.Get<WeaponHolderTag>() = new WeaponHolderTag { Weapons = GetComponentsInChildren<WeaponTagMonoLink>() };
+        //}
     }
 }

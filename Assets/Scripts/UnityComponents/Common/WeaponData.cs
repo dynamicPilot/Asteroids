@@ -8,9 +8,12 @@ namespace UnityComponents.Common
     public class WeaponData : ScriptableObject
     {
         public string WeaponName;
-        public int MaxShooting;
+        public int MaxShoots;
+        public int ShootsToRecover = 3;
         public float RecoveryTime = 1f;
         public GameObject BulletPrefab;
+        public float VelocityMagnitude = 20f;
+        public bool PlayerIsParentContainer = false;
     }
 }
 

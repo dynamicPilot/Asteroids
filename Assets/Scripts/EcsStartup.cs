@@ -12,6 +12,8 @@ using Systems.CoreSystems.BaseGameplay;
 using Components.GameStates.GameplayEvents;
 using Components.PhysicsEvents;
 using Systems.CoreSystems.Teleport;
+using Systems.CoreSystems.Shooting;
+using Systems.CoreSystems;
 
 namespace Client {
     sealed class EcsStartup : MonoBehaviour 
@@ -42,7 +44,9 @@ namespace Client {
             _systems
 
                 // register your systems:
+                .Add(new CheckWeaponRecoverySystem())
                 .Add(inputSystems)
+                .Add(new ChangeWeaponShootsSystem())
                 .Add(spawnerSystem)
 
 
@@ -78,8 +82,10 @@ namespace Client {
         {
             return new EcsSystems(_world)
                 .Add(new SpawnPlayer())
+                .Add(new PlayerWeaponSpawner())
                 .Add(new TeleportSpawner())
                 .Add(new EnemySpawner())
+                .Add(new BulletSpawner())
                 .Add(new SpawnSystem());
         }
 
@@ -88,12 +94,14 @@ namespace Client {
             EcsSystems inputSystems = new EcsSystems(_world)
                 .OneFrame<VertucalKeyDownTag>()
                 .OneFrame<HorizontalKeyDownTag>()
+                .OneFrame<FirstWeaponFireKeyDownTag>()
                 .Add(new KeyInputSystem())
                 .Add(new ShootingInputSystem())
-                .Add(new MakeWeaponShootSystem())
                 .Add(new AddRotationInputSystem())
-                .Add(new AddForceInputSystem());
-                
+                .Add(new AddForceInputSystem())
+                .Add(new WeaponShootCheckSystem());
+
+
             return inputSystems;
         }
 

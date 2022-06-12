@@ -1,3 +1,4 @@
+using Components.Objects.Moves;
 using Leopotam.Ecs;
 using System.Collections;
 using System.Collections.Generic;
@@ -31,6 +32,24 @@ namespace UnityComponents.Factories
 
             EcsEntity ecsEntity = _world.NewEntity();
             monoEntity.Make(ref ecsEntity);
+        }
+
+        public void SpawnPrefabWithVelocity (SpawnPrefabWithVelocity prefab)
+        {
+            Debug.Log("Spawn with Velocity");
+            GameObject gameObject = Instantiate(prefab.Prefab, prefab.Position, prefab.Rotation, prefab.Parent);
+            var monoEntity = gameObject.GetComponent<MonoEntity>();
+
+            if (monoEntity == null) return;
+
+            EcsEntity ecsEntity = _world.NewEntity();
+            monoEntity.Make(ref ecsEntity);
+
+            ecsEntity.Get<Velocity>() = new Velocity()
+            {
+                Value = prefab.Velocity,
+                Acceleration = Vector3.zero
+            };
         }
     }
 }

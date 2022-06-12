@@ -11,6 +11,7 @@ namespace UnityComponents.Common
         public Transform AsteroidsContainer;
         public Transform UFOsContainer;
         public Transform TeleportContainer;
+        public Transform BulletsContainer;
     }
 }
 
