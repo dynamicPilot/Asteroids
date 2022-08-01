@@ -24,12 +24,14 @@ namespace Systems.MoveSystems
                 var newPosition = _filter.Get3(index);
                 ref Rotation rotation = ref _filter.Get4(index);
 
-                gameObject.Value.transform.position = newPosition.Value;
-                gameObject.Value.transform.Rotate(rotation.Value);
+                if (gameObject.Value != null)
+                {
+                    gameObject.Value.transform.position = newPosition.Value;
+                    gameObject.Value.transform.Rotate(rotation.Value);
 
-                var playerTag = gameObject.Value.GetComponent<PlayerTagMonoLink>();
-                if (playerTag != null) rotation.Value = Vector3.zero;
-
+                    var playerTag = gameObject.Value.GetComponent<PlayerTagMonoLink>();
+                    if (playerTag != null) rotation.Value = Vector3.zero;
+                }              
             }
         }
     }

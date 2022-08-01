@@ -15,6 +15,7 @@ namespace UnityComponents.Common
 
         [Header("Enemies")]
         public GameObject AsteroidPrefab;
+        public GameObject SmallAsteroidPrefab;
         public GameObject UFOPrefab;
         public float UFOPart = 0.3f;
         [Header("---")]

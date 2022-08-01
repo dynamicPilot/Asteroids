@@ -1,12 +1,13 @@
 using UnityComponents.MonoLinks.WeaponLinks;
 using Leopotam.Ecs;
 using UnityEngine;
+using UnityComponents.MonoLinks.Base;
 
 namespace Components.Objects.Tags
 {
     [System.Serializable]
-    public struct WeaponHolderTag: IEcsIgnoreInFilter
+    public struct WeaponHolderLink
     {
-        //public WeaponTagMonoLink[] Weapons;
+        public WeaponHolderMonoEntity Value;
     }
 }

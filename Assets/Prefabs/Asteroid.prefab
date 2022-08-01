@@ -262,7 +262,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Value:
-    Score: 0
+    Score: 10
+    CanBeDivided: 1
 --- !u!114 &-7013610326072807403
 MonoBehaviour:
   m_ObjectHideFlags: 0

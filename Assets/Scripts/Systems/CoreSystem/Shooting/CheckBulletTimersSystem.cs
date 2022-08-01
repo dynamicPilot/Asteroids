@@ -1,14 +1,12 @@
-using Components.Core;
 using Components.Objects.Tags;
 using Components.Objects.Weapons;
 using Leopotam.Ecs;
-using UnityEngine;
 
 namespace Systems.CoreSystems.Shooting
 {
-    public class CheckWeaponRecoverySystem : IEcsRunSystem
+    public class CheckBulletTimersSystem : IEcsRunSystem
     {
-        private EcsFilter<RecoveryTimer, WeaponTag> _filter = null;
+        private EcsFilter<RecoveryTimer, BulletTag> _filter = null;
 
         public void Run()
         {
@@ -16,23 +14,15 @@ namespace Systems.CoreSystems.Shooting
             {
                 ref EcsEntity entity = ref _filter.GetEntity(index);
                 ref RecoveryTimer timer = ref entity.Get<RecoveryTimer>();
-                //timer.Value -= Time.deltaTime;
-
 
                 if (timer.Value <= 0)
                 {
-                    ref Shoots shoots = ref entity.Get<Shoots>();
-
-                    if (shoots.Value < shoots.MaxValue)
-                        shoots.Value++;
-                    else
-                        timer.Value = 0;
+                    entity.Get<DestroyObject>() = new DestroyObject();
                 }
 
                 timer.IsActive = (timer.Value > 0);
             }
 
         }
-
     }
 }

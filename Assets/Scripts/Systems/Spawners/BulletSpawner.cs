@@ -8,7 +8,6 @@ namespace Systems.Spawners
 {
     public class BulletSpawner : IEcsRunSystem
     {
-        //private StaticData _staticData;
         private SceneData _sceneData;
         private EcsWorld _world = null;
 
@@ -28,20 +27,8 @@ namespace Systems.Spawners
             }
         }
 
-        void SpawnInPlayerContainer()
-        {
-            //_world.NewEntity().Get<SpawnPrefabWithVelocity>() = new SpawnPrefabWithVelocity
-            //{
-            //    Prefab = _staticData.AsteroidPrefab,
-            //    Position = SpawnerUtility.GetPositionToSpawn(_staticData),
-            //    Rotation = Quaternion.identity,
-            //    Parent = _sceneData.AsteroidsContainer
-            //};
-        }
-
         void SpawnInBulletContainer(WeaponTag tag, MakeShoot info)
         {
-            Debug.Log("SpawnBullet....." + info.Velocity * tag.Data.VelocityMagnitude);
             _world.NewEntity().Get<SpawnPrefabWithVelocity>() = new SpawnPrefabWithVelocity
             {
                 Prefab = tag.Data.BulletPrefab,

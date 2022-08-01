@@ -37,9 +37,11 @@ namespace UnityComponents.MonoLinks.Base
                 monoLink.Make(ref entity);
             }
 
-            entity.Get<GameObjectLink>() = new GameObjectLink { Value = gameObject };
-            entity.Get<Position>() = new Position { Value = transform.position };
+            _entity.Get<GameObjectLink>() = new GameObjectLink { Value = gameObject };
+            _entity.Get<Position>() = new Position { Value = transform.position };
         }
+
+
     }
 }
 

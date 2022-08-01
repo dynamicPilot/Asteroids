@@ -36,7 +36,6 @@ namespace UnityComponents.Factories
 
         public void SpawnPrefabWithVelocity (SpawnPrefabWithVelocity prefab)
         {
-            Debug.Log("Spawn with Velocity");
             GameObject gameObject = Instantiate(prefab.Prefab, prefab.Position, prefab.Rotation, prefab.Parent);
             var monoEntity = gameObject.GetComponent<MonoEntity>();
 

@@ -12,5 +12,5 @@ namespace UnityComponents.MonoLinks.Base
 		{
 			_entity = entity;
 		}
-	}
+    }
 }

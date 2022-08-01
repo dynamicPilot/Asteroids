@@ -21,7 +21,6 @@ namespace Systems.InputSystems
 
             foreach (int index in _filter)
             {
-                Debug.Log("Add rotation");
                 ref EcsEntity entity = ref _filter.GetEntity(index);
                 float direction = _filter.Get1(index).Value;
                 ref Rotation rotation = ref entity.Get<Rotation>();

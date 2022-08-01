@@ -14,6 +14,8 @@ using Components.PhysicsEvents;
 using Systems.CoreSystems.Teleport;
 using Systems.CoreSystems.Shooting;
 using Systems.CoreSystems;
+using Systems;
+using Systems.Destroyers;
 
 namespace Client {
     sealed class EcsStartup : MonoBehaviour 
@@ -39,14 +41,17 @@ namespace Client {
 #endif
             EcsSystems inputSystems = InputSystems();
             EcsSystems spawnerSystem = SpawnSystems();
-            
+            EcsSystems destroySystems = DestroySystems();
 
             _systems
 
                 // register your systems:
+                
+                .Add(new UpdateTimersSystem())
+                .Add(new CheckBulletTimersSystem())
                 .Add(new CheckWeaponRecoverySystem())
                 .Add(inputSystems)
-                .Add(new ChangeWeaponShootsSystem())
+                .Add(new ChangeWeaponShootsSystem())               
                 .Add(spawnerSystem)
 
 
@@ -58,12 +63,13 @@ namespace Client {
                 .Inject(_staticData)
                 .Inject(_sceneData)
 
-                .Init ();
+                .Init();
 
             EcsSystems coreSystems = CoreGameplaySystems();
             EcsSystems followPlayerSystems = FollowPlayerSystems();
             EcsSystems movableSystems = MovableSystems();
             EcsSystems teleportSystems = TeleportSystems();
+            
 
             _fixedSystems
                 
@@ -71,10 +77,14 @@ namespace Client {
                 .Add(movableSystems)
                 .Add(followPlayerSystems)
                 .Add(new UpdateBodyPositionAndRotation())
+                .Add(new BulletCollisionCheckerSystem())
                 .Add(coreSystems)
+                .Add(destroySystems)
                 .OneFrame<OnTriggerExit2DEvent>()               
-                .OneFrame<OnCollisionEnter2DEvent>()               
+                .OneFrame<OnCollisionEnter2DEvent>()
+                
                 .Inject(_staticData)
+                .Inject(_sceneData)
                 .Init();
         }
 
@@ -87,6 +97,12 @@ namespace Client {
                 .Add(new EnemySpawner())
                 .Add(new BulletSpawner())
                 .Add(new SpawnSystem());
+        }
+
+        private EcsSystems DestroySystems()
+        {
+            return new EcsSystems(_world)
+                .Add(new DestroySystem());
         }
 
         private EcsSystems InputSystems()
@@ -131,6 +147,8 @@ namespace Client {
                 .OneFrame<DeadEvent>()
                 .Add(new DeadByEnemyCollisionSystem())
                 .Add(new DeadCheckerGameplaySystem());
+
+                
         }
 
         private EcsSystems TeleportSystems()

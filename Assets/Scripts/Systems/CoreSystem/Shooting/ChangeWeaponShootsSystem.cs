@@ -15,14 +15,11 @@ namespace Systems.CoreSystems.Shooting
             {
                 ref EcsEntity entity = ref _filter.GetEntity(index);
                 ref Shoots shoots = ref entity.Get<Shoots>();
-
-                Debug.Log("Update Shoots");
                 shoots.Value -= 1;
 
                 ref RecoveryTimer timer = ref entity.Get<RecoveryTimer>();
                 timer.Value += timer.RecoveryValue;
                 timer.IsActive = true;
-                Debug.Log("Update timer");
                 //entity.Del<MakeShoot>();
             }
         }

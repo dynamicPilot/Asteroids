@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3151326024424459445}
   - component: {fileID: 3151326024424459440}
   - component: {fileID: 3151326024424459441}
-  - component: {fileID: 8908998031582681380}
+  - component: {fileID: 5366002311158314680}
   - component: {fileID: 5777690704602462243}
   - component: {fileID: 6580184549261285524}
   - component: {fileID: -9104821575193695559}
@@ -150,7 +150,7 @@ PolygonCollider2D:
       - {x: 0.22222222, y: -0.22222222}
       - {x: 0.22222222, y: -0.1388889}
       - {x: 0.041666668, y: 0.22222222}
---- !u!114 &8908998031582681380
+--- !u!114 &5366002311158314680
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -159,7 +159,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3151326024424459450}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eaf17d60bd55a2c4084a0e18cef4482a, type: 3}
+  m_Script: {fileID: 11500000, guid: bf6ef0a5473494445a938bc1cac7e48c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &5777690704602462243

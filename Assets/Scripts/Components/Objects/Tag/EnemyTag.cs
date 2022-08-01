@@ -6,5 +6,6 @@ namespace Components.Objects.Tags
 	public struct EnemyTag
 	{
 		public int Score;
+		public bool CanBeDivided;
 	}
 }

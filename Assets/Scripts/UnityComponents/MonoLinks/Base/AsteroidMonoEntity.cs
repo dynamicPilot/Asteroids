@@ -14,11 +14,7 @@ namespace UnityComponents.MonoLinks.Base
             base.Make(ref entity);
 
             entity.Get<Rotation>() = new Rotation { Value = SpawnerUtility.GetRotationToSpawn(_staticData) };
-            //entity.Get<Velocity>() = new Velocity
-            //{
-            //    Value = SpawnerUtility.GetVelocityToSpawn(_staticData),
-            //    Acceleration = Vector3.zero
-            //};
         }
+
     }
 }

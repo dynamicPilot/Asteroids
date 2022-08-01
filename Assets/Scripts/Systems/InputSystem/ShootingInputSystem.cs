@@ -9,7 +9,7 @@ namespace System.InputSystems
     public class ShootingInputSystem : IEcsRunSystem
     {
         private EcsWorld _world = null;
-        private EcsFilter<PlayerTag, WeaponHolderTag> _filter = null;
+        private EcsFilter<PlayerTag, WeaponHolderLink> _filter = null;
 
         public void Run()
         {

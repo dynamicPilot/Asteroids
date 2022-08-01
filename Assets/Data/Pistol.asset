@@ -17,5 +17,5 @@ MonoBehaviour:
   ShootsToRecover: 3
   RecoveryTime: 0.5
   BulletPrefab: {fileID: 3192708269236773649, guid: bfe58977e0f78384781928aef04092e4, type: 3}
-  VelocityMagnitude: 20
+  VelocityMagnitude: 10
   PlayerIsParentContainer: 0
