@@ -1,6 +1,7 @@
 using Components.Common.Input;
 using Components.Objects.Tags;
 using Leopotam.Ecs;
+using UnityComponents.Common;
 using UnityEngine;
 
 
@@ -8,13 +9,16 @@ namespace System.InputSystems
 {
     public class KeyInputSystem : IEcsRunSystem
     {
-        private EcsWorld _world = null;
+        private InputControl _inputs;
+        //private EcsWorld _world = null;
         private EcsFilter<PlayerTag> _filter = null;
 
         public void Run()
         {
-            float v = Input.GetAxis("Vertical");
-            float h = Input.GetAxis("Horizontal");
+            if (_inputs == null) return;
+
+            float v = _inputs.GetVerticalAxis(); //Input.GetAxis("Vertical");
+            float h = _inputs.GetHorizontalAxis(); //Input.GetAxis("Horizontal");
 
             if (v > 0)
             {

@@ -19,8 +19,8 @@ MonoBehaviour:
   AsteroidPrefab: {fileID: 2116353068753373821, guid: 8d7a9a7bdf7f5f543af638b981921d9f, type: 3}
   SmallAsteroidPrefab: {fileID: 382089430456461415, guid: 8fa12516a9d416a48af9b675020f4f18, type: 3}
   UFOPrefab: {fileID: 4451464949676636271, guid: 6128245dd3789484a8a8d44398a8fc77, type: 3}
-  UFOPart: 0.3
-  UFOPushForce: 2
+  UFOPart: 0.2
+  UFOPushForce: 1
   MaxEnemiesNumber: 15
   SpawnTimer: 5
   SpawnerRectX: 10

@@ -23,6 +23,7 @@ namespace Client {
     {
         [SerializeField] private SceneData _sceneData;
         [SerializeField] private StaticData _staticData;
+        [SerializeField] private InputControl _inputs;
         [SerializeField] EcsUiEmitter _uiEmitter;
 
         private ScoreService _scoreService;
@@ -71,6 +72,7 @@ namespace Client {
                 .Inject(_sceneData)
                 .InjectUi(_uiEmitter)
                 .Inject(_scoreService)
+                .Inject(_inputs)
                 .Init();
 
         }
@@ -97,7 +99,7 @@ namespace Client {
                 .OneFrame<OnTriggerExit2DEvent>()
                 .OneFrame<OnCollisionEnter2DEvent>()
 
-                .Inject(_staticData)
+                .Inject(_staticData)               
                 .Inject(_sceneData)
                 .Inject(_scoreService)
                 .Init();
