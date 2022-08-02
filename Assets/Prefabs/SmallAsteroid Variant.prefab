@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8439618893304724636, guid: 8d7a9a7bdf7f5f543af638b981921d9f, type: 3}
       propertyPath: Value.Score
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: -8439618893304724636, guid: 8d7a9a7bdf7f5f543af638b981921d9f, type: 3}
       propertyPath: Value.CanBeDivided
@@ -17,7 +17,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2116353068753373821, guid: 8d7a9a7bdf7f5f543af638b981921d9f, type: 3}
       propertyPath: m_Name
-      value: SmallAsteroid
+      value: SmallAsteroid Variant
       objectReference: {fileID: 0}
     - target: {fileID: 2116353068753373822, guid: 8d7a9a7bdf7f5f543af638b981921d9f, type: 3}
       propertyPath: m_RootOrder

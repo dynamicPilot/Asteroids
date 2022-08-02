@@ -13,7 +13,7 @@ namespace UnityComponents.MonoLinks.Base
         {
             base.Make(ref entity);
 
-            entity.Get<Rotation>() = new Rotation { Value = SpawnerUtility.GetRotationToSpawn(_staticData) };
+            entity.Get<Rotation>() = new Rotation { Value = SpawnerUtility.GetRotationToSpawn(_staticData), AbsoluteValue = SpawnerUtility.GetRotationToSpawn(_staticData) };
         }
 
     }

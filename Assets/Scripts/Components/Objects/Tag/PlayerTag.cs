@@ -4,6 +4,5 @@ namespace Components.Objects.Tags
 {
     public struct PlayerTag : IEcsIgnoreInFilter
     {
-
     }
 }

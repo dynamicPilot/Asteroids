@@ -29,6 +29,7 @@ namespace Systems.MoveSystems
                     gameObject.Value.transform.position = newPosition.Value;
                     gameObject.Value.transform.Rotate(rotation.Value);
 
+                    rotation.AbsoluteValue = gameObject.Value.transform.eulerAngles;
                     var playerTag = gameObject.Value.GetComponent<PlayerTagMonoLink>();
                     if (playerTag != null) rotation.Value = Vector3.zero;
                 }              

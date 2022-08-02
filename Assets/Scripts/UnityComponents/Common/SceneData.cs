@@ -11,6 +11,9 @@ namespace UnityComponents.Common
         [SerializeField] private DestroyFactory _destroyer;
         public DestroyFactory Destroyer { get => _destroyer; }
 
+        [SerializeField] private GameUI _gameUI;
+        public GameUI GameUIScript { get => _gameUI; }
+
         public Transform AsteroidsContainer;
         public Transform UFOsContainer;
         public Transform TeleportContainer;

@@ -1,6 +1,5 @@
 using Leopotam.Ecs;
 using UnityEngine;
-using System.Demo;
 using System.InputSystems;
 using Components.Common.Input;
 using Systems.Spawners;
@@ -13,15 +12,20 @@ using Components.GameStates.GameplayEvents;
 using Components.PhysicsEvents;
 using Systems.CoreSystems.Teleport;
 using Systems.CoreSystems.Shooting;
-using Systems.CoreSystems;
 using Systems;
 using Systems.Destroyers;
+using Leopotam.Ecs.Ui.Systems;
+using Systems.UISystems;
+using Services;
 
 namespace Client {
     sealed class EcsStartup : MonoBehaviour 
     {
         [SerializeField] private SceneData _sceneData;
         [SerializeField] private StaticData _staticData;
+        [SerializeField] EcsUiEmitter _uiEmitter;
+
+        private ScoreService _scoreService;
 
         EcsWorld _world;
         EcsSystems _systems;
@@ -33,59 +37,75 @@ namespace Client {
             _world = new EcsWorld ();
             _systems = new EcsSystems (_world);
             _fixedSystems = new EcsSystems(_world);
+            
 
 #if UNITY_EDITOR
             Leopotam.Ecs.UnityIntegration.EcsWorldObserver.Create (_world);
             Leopotam.Ecs.UnityIntegration.EcsSystemsObserver.Create (_systems);
             Leopotam.Ecs.UnityIntegration.EcsSystemsObserver.Create(_fixedSystems);
 #endif
+            InitializedServices();
+
+
+            InitializeUpdateSystems();
+            InitializeFixedSystems();
+        }
+
+        private void InitializeUpdateSystems()
+        {
             EcsSystems inputSystems = InputSystems();
             EcsSystems spawnerSystem = SpawnSystems();
-            EcsSystems destroySystems = DestroySystems();
+            EcsSystems weaponSystems = WeaponSystems();
+            EcsSystems uiSystems = UISystems();
 
             _systems
-
-                // register your systems:
                 
                 .Add(new UpdateTimersSystem())
-                .Add(new CheckBulletTimersSystem())
-                .Add(new CheckWeaponRecoverySystem())
+                .Add(uiSystems)
+                .Add(weaponSystems)
                 .Add(inputSystems)
-                .Add(new ChangeWeaponShootsSystem())               
+                .Add(new ChangeWeaponShootsSystem())
                 .Add(spawnerSystem)
 
-
-                // register one-frame components (order is important), for example:
-                // .OneFrame<TestComponent1> ()
-                // .OneFrame<TestComponent2> ()
-
-                // inject service instances here (order doesn't important), for example:
                 .Inject(_staticData)
                 .Inject(_sceneData)
-
+                .InjectUi(_uiEmitter)
+                .Inject(_scoreService)
                 .Init();
 
+        }
+
+        private void InitializeFixedSystems()
+        {
             EcsSystems coreSystems = CoreGameplaySystems();
+            EcsSystems scoreSystems = ScoreSystems();
             EcsSystems followPlayerSystems = FollowPlayerSystems();
             EcsSystems movableSystems = MovableSystems();
             EcsSystems teleportSystems = TeleportSystems();
-            
+            EcsSystems destroySystems = DestroySystems();
 
             _fixedSystems
-                
-                .Add(teleportSystems)                
+
+                .Add(teleportSystems)
                 .Add(movableSystems)
                 .Add(followPlayerSystems)
                 .Add(new UpdateBodyPositionAndRotation())
-                .Add(new BulletCollisionCheckerSystem())
+                .Add(new PlayerMovingInfoSystem())
                 .Add(coreSystems)
+                .Add(scoreSystems)
                 .Add(destroySystems)
-                .OneFrame<OnTriggerExit2DEvent>()               
+                .OneFrame<OnTriggerExit2DEvent>()
                 .OneFrame<OnCollisionEnter2DEvent>()
-                
+
                 .Inject(_staticData)
                 .Inject(_sceneData)
+                .Inject(_scoreService)
                 .Init();
+        }
+
+        private void InitializedServices()
+        {
+            _scoreService = new ScoreService();
         }
 
         private EcsSystems SpawnSystems()
@@ -135,11 +155,14 @@ namespace Client {
                 .Add(new GravitationSystem())
                 .Add(new MoveSystem())
                 .Add(new TeleportingSystem());
+                
         }
 
         private EcsSystems CoreGameplaySystems()
         {
             return new EcsSystems(_world)
+
+                .Add(new BulletCollisionCheckerSystem())
 
                 .OneFrame<OnEnemyCollisionEvent>()
                 .Add(new EnemyCollisionCheckerSystem())
@@ -147,14 +170,32 @@ namespace Client {
                 .OneFrame<DeadEvent>()
                 .Add(new DeadByEnemyCollisionSystem())
                 .Add(new DeadCheckerGameplaySystem());
-
                 
+        }
+
+        private EcsSystems ScoreSystems()
+        {
+            return new EcsSystems(_world)
+                .Add(new ScoreCounterSystem());
+        }
+
+        private EcsSystems WeaponSystems()
+        {
+            return new EcsSystems(_world)
+                .Add(new CheckBulletTimersSystem())
+                .Add(new CheckWeaponRecoverySystem());
         }
 
         private EcsSystems TeleportSystems()
         {
             return new EcsSystems(_world)
                 .Add(new TeleportTriggerCheckerSystem());
+        }
+
+        private EcsSystems UISystems()
+        {
+            return new EcsSystems(_world)
+                .Add(new UIGameProgressSystem());
         }
 
         void Update () {

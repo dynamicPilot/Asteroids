@@ -11,5 +11,6 @@ namespace Components.Objects.Moves
     public struct Rotation
     {
         public Vector3 Value;
+        public Vector3 AbsoluteValue;
     }
 }
