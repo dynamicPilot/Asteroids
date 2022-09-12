@@ -1,7 +1,8 @@
 # Asteroids
  Asteroids game clone. 
  
- Version 1 : game in ESC approach using Leopotam framework.\n
+ Version 1 : game in ESC approach using Leopotam framework.
+ 
  Version 2 : outdated (not as good as can be ;)) 
  
  ## What to do
